@@ -1,0 +1,15 @@
+services:
+
+    DoctrineConfiguration:
+        class: \Doctrine\ORM\Configuration
+        factory_class: \Doctrine\ORM\Tools\Setup
+        factory_method: createAnnotationMetadataConfiguration
+        arguments: [ %orm.doctrine.entities.path%, %orm.doctrine.devmode% ]
+        calls:
+            - [ 'addCustomNumericFunction', [ 'RANDOM', '\WordSelector\Util\Doctrine\Random' ] ]
+
+    EntityManager:
+        class: \Doctrine\ORM\EntityManager
+        factory_class: \Doctrine\ORM\EntityManager
+        factory_method: create
+        arguments: [ %orm.doctrine.db%, @DoctrineConfiguration ]
