@@ -13,6 +13,9 @@ use Doctrine\ORM\Query\SqlWalker;
 class Random extends FunctionNode
 {
 
+    /**
+     * @param Parser $parser
+     */
     public function parse(Parser $parser)
     {
         $parser->match(Lexer::T_IDENTIFIER);
@@ -20,6 +23,11 @@ class Random extends FunctionNode
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
     }
 
+    /**
+     * @param  SqlWalker $sqlWalker
+     * @return string
+     * @throws QueryException
+     */
     public function getSql(SqlWalker $sqlWalker)
     {
         switch($sqlWalker->getConnection()->getDatabasePlatform()->getName()) {

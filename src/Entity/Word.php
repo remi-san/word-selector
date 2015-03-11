@@ -42,10 +42,12 @@ class Word {
     /**
      * Constructor
      *
+     * @param int    $id
      * @param string $word
      */
-    function __construct($word)
+    function __construct($id, $word)
     {
+        $this->id = $id;
         $this->word = $word;
         $this->length = strlen($this->word);
         $this->nbLetters();
