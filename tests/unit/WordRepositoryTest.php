@@ -1,10 +1,8 @@
 <?php
 namespace WordSelector\Test;
 
-use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Query;
 use WordSelector\Entity\Word;
-use WordSelector\Manager\WordManager;
 use WordSelector\Repository\WordRepository;
 
 class WordRepositoryTest extends \PHPUnit_Framework_TestCase {
@@ -16,7 +14,12 @@ class WordRepositoryTest extends \PHPUnit_Framework_TestCase {
 
         $word = new Word(1, 'TEST');
 
+        $configuration = \Mockery::mock('\\Doctrine\\ORM\\Configuration');
+        $configuration->shouldReceive('getDefaultQueryHints')->andReturn(array());
+        $configuration->shouldReceive('isSecondLevelCacheEnabled')->andReturn(false);
+
         $entityManager = \Mockery::mock('\\Doctrine\\ORM\\EntityManager');
+        $entityManager->shouldReceive('getConfiguration')->andReturn($configuration);
 
         $query = \Mockery::mock(new Query($entityManager));
         $query->shouldReceive('setParameter')->andReturn($query);
