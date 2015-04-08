@@ -1,6 +1,8 @@
 <?php
 namespace WordSelector\Manager;
 
+use WordSelector\Entity\Word;
+
 class WordManager extends AbstractManager {
 
     /**
