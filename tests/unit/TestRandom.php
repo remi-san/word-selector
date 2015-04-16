@@ -9,13 +9,14 @@
 namespace WordSelector\Test;
 
 
+use Doctrine\ORM\Query\QueryException;
 use WordSelector\Util\Doctrine\Random;
 
 class TestRandom  extends \PHPUnit_Framework_TestCase {
 
     /**
      * @test
-     * @throws \Doctrine\ORM\Query\QueryException
+     * @throws QueryException
      */
     public function testRandomMySql() {
 
@@ -39,7 +40,7 @@ class TestRandom  extends \PHPUnit_Framework_TestCase {
 
     /**
      * @test
-     * @throws \Doctrine\ORM\Query\QueryException
+     * @throws QueryException
      */
     public function testRandomPostgresql() {
 
@@ -63,7 +64,7 @@ class TestRandom  extends \PHPUnit_Framework_TestCase {
 
     /**
      * @test
-     * @throws \Doctrine\ORM\Query\QueryException
+     * @throws QueryException
      */
     public function testRandomOracle() {
 
