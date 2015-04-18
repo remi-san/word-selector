@@ -9,6 +9,6 @@ $loader->load('application.yml');
 
 /* @var $wordSelector WordSelector */
 $wordSelector = $container->get('WordSelector');
-$word = $wordSelector->getRandomWord(10);
+$word = $wordSelector->getRandomWord(10, 'en');
 
 echo $word . "\n";

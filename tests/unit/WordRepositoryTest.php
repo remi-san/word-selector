@@ -12,7 +12,7 @@ class WordRepositoryTest extends \PHPUnit_Framework_TestCase {
      */
     public function testWordService() {
 
-        $word = new Word(1, 'TEST');
+        $word = new Word(1, 'TEST', 'en');
 
         $configuration = \Mockery::mock('\\Doctrine\\ORM\\Configuration');
         $configuration->shouldReceive('getDefaultQueryHints')->andReturn(array());
@@ -32,6 +32,6 @@ class WordRepositoryTest extends \PHPUnit_Framework_TestCase {
         $classMetadata = \Mockery::mock('\\Doctrine\\ORM\\Mapping\ClassMetadata');
 
         $wr = new WordRepository($entityManager, $classMetadata);
-        $this->assertEquals($word, $wr->getRandomWord(5));
+        $this->assertEquals($word, $wr->getRandomWord(4, 'en'));
     }
 } 

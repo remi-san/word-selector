@@ -3,7 +3,7 @@ namespace WordSelector\Entity;
 
 /**
  * @Entity(repositoryClass="\WordSelector\Repository\WordRepository")
- * @Table(name="words.en")
+ * @Table(name="wordselector.word")
  **/
 class Word {
 
@@ -28,6 +28,12 @@ class Word {
     private $length;
 
     /**
+     * @var float
+     * @Column(type="string")
+     **/
+    private $lang;
+
+    /**
      * @var int
      * @Column(type="integer",name="letters_nb")
      */
@@ -44,11 +50,13 @@ class Word {
      *
      * @param int    $id
      * @param string $word
+     * @param string $lang
      */
-    function __construct($id, $word)
+    function __construct($id, $word, $lang)
     {
         $this->id = $id;
         $this->word = $word;
+        $this->lang = $lang;
         $this->length = strlen($this->word);
         $this->nbLetters();
         $this->complexity();
@@ -76,6 +84,14 @@ class Word {
     public function getWord()
     {
         return $this->word;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLang()
+    {
+        return $this->lang;
     }
 
     /**

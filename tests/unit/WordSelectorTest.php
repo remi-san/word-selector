@@ -14,9 +14,9 @@ class WordSelectorTest extends \PHPUnit_Framework_TestCase {
         $word = 'TEST';
 
         $service = \Mockery::mock('\\WordSelector\\Service\\WordService');
-        $service->shouldReceive('getRandomWord')->andReturn(new Word(1, $word));
+        $service->shouldReceive('getRandomWord')->andReturn(new Word(1, $word, 'en'));
 
         $ws = new WordSelector($service);
-        $this->assertEquals($word, $ws->getRandomWord(4));
+        $this->assertEquals($word, $ws->getRandomWord(4, 'en'));
     }
 } 

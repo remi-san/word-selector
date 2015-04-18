@@ -1,25 +1,22 @@
-CREATE SCHEMA words;
+CREATE SCHEMA wordselector;
 
 -- Table en
-CREATE TABLE en (
-    id integer NOT NULL,
-    word character varying(45),
-    len integer,
+CREATE TABLE wordselector.word (
+    id         serial                NOT NULL,
+    word       character varying(45) NOT NULL,
+    lang       character(2)          NOT NULL,
+    len        integer,
     letters_nb integer,
-    complexity numeric(8,5)
+    complexity numeric(8,5),
+    CONSTRAINT word_pkey   PRIMARY KEY (id),
+    CONSTRAINT en_word_key UNIQUE (word)
 );
-CREATE SEQUENCE en_id_seq1 START WITH 1 INCREMENT BY 1 NO MINVALUE NO MAXVALUE CACHE 1;
-ALTER SEQUENCE en_id_seq1 OWNED BY en.id;
-ALTER TABLE ONLY en ALTER COLUMN id SET DEFAULT nextval('en_id_seq1'::regclass);
-ALTER TABLE ONLY en ADD CONSTRAINT en_pkey1 PRIMARY KEY (id);
-ALTER TABLE ONLY en ADD CONSTRAINT en_word_key UNIQUE (word);
-
 
 -- Table letter_details
-CREATE TABLE letter_details (
-    table_name character varying(3) NOT NULL,
-    word_id integer NOT NULL,
-    letter character(1) NOT NULL,
-    occurences integer
+CREATE TABLE wordselector.letter_details (
+    word_id    INTEGER      NOT NULL,
+    letter     CHARACTER(1) NOT NULL,
+    occurences INTEGER,
+    CONSTRAINT letter_details_pkey         PRIMARY KEY (word_id, letter),
+    CONSTRAINT letter_details_word_id_fkey FOREIGN KEY (word_id) REFERENCES wordselector.word (id)
 );
-ALTER TABLE ONLY letter_details ADD CONSTRAINT letter_details_pkey PRIMARY KEY (table_name, word_id, letter);

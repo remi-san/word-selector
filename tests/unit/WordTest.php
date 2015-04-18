@@ -11,7 +11,7 @@ class WordTest extends \PHPUnit_Framework_TestCase {
     public function testWordSelector() {
 
         $text = 'TEST';
-        $word = new Word(3, $text);
+        $word = new Word(3, $text, 'en');
 
         $this->assertEquals(3, $word->getId());
         $this->assertEquals($text, $word->getWord());
