@@ -1,10 +1,18 @@
 services:
 
-    DoctrineConfiguration:
+    DoctrineAnnotationConfiguration:
         class: \Doctrine\ORM\Configuration
         factory_class: \Doctrine\ORM\Tools\Setup
         factory_method: createAnnotationMetadataConfiguration
-        arguments: [ %orm.doctrine.entities.path%, %orm.doctrine.devmode% ]
+        arguments: [ %orm.doctrine.entities.paths%, %orm.doctrine.devmode% ]
+        calls:
+            - [ 'addCustomNumericFunction', [ 'RANDOM', '\WordSelector\Util\Doctrine\Random' ] ]
+
+    DoctrineYmlConfiguration:
+        class: \Doctrine\ORM\Configuration
+        factory_class: \Doctrine\ORM\Tools\Setup
+        factory_method: createYAMLMetadataConfiguration
+        arguments: [ %orm.doctrine.yml.paths%, %orm.doctrine.devmode% ]
         calls:
             - [ 'addCustomNumericFunction', [ 'RANDOM', '\WordSelector\Util\Doctrine\Random' ] ]
 
@@ -12,4 +20,4 @@ services:
         class: \Doctrine\ORM\EntityManager
         factory_class: \Doctrine\ORM\EntityManager
         factory_method: create
-        arguments: [ %orm.doctrine.db%, @DoctrineConfiguration ]
+        arguments: [ %orm.doctrine.db%, @DoctrineYmlConfiguration ]

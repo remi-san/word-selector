@@ -16,6 +16,8 @@
         "doctrine/orm": "~2.4"
     },
     "require-dev": {
+        "symfony/dependency-injection": "~2.6",
+        "symfony/config": "~2.6",
         "phpunit/phpunit": "~4.5",
         "Mockery/Mockery": "~0.9"
     },

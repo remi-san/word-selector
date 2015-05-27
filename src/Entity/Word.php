@@ -13,37 +13,37 @@ class Word {
      * @Column(type="integer")
      * @GeneratedValue
      **/
-    private $id;
+    protected $id;
 
     /**
      * @var string
      * @Column(type="string")
      **/
-    private $word;
+    protected $word;
 
     /**
      * @var int
      * @Column(type="integer",name="len")
      **/
-    private $length;
+    protected $length;
 
     /**
      * @var float
      * @Column(type="string")
      **/
-    private $lang;
+    protected $lang;
 
     /**
      * @var int
      * @Column(type="integer",name="letters_nb")
      */
-    private $nbLetters;
+    protected $nbLetters;
 
     /**
      * @var float
      * @Column(type="float")
      */
-    private $complexity;
+    protected $complexity;
 
     /**
      * Constructor
@@ -113,14 +113,14 @@ class Word {
     /**
      * Calculate the number of different letters in the word
      */
-    private function nbLetters() {
+    protected function nbLetters() {
         $this->nbLetters = count(array_unique(str_split($this->word)));
     }
 
     /**
      * Calculate the complexity of the word
      */
-    private function complexity() {
+    protected function complexity() {
         $this->complexity = ($this->nbLetters*$this->nbLetters*$this->nbLetters)/($this->length*$this->length);
     }
 }

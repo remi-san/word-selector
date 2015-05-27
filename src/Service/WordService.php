@@ -2,8 +2,46 @@
 namespace WordSelector\Service;
 
 use WordSelector\Entity\Word;
+use WordSelector\Manager\WordManager;
 
-class WordService extends AbstractService implements Service {
+class WordService {
+
+    /**
+     * @var WordManager
+     */
+    protected $manager;
+
+    /**
+     * Constructor
+     *
+     * @param WordManager $manager The manager
+     */
+    public function __construct(WordManager $manager)
+    {
+        $this->manager = $manager;
+    }
+
+    /**
+     * Finds an object by its identifier.
+     *
+     * @param mixed $id The identifier.
+     *
+     * @return object The object.
+     */
+    public function getById($id)
+    {
+        return $this->manager->getById($id);
+    }
+
+    /**
+     * Finds all objects.
+     *
+     * @return array The objects.
+     */
+    public function getAll()
+    {
+        return $this->manager->getAll();
+    }
 
     /**
      * Gets a random word of <length> characters for the <lang> language

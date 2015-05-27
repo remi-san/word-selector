@@ -2,8 +2,46 @@
 namespace WordSelector\Manager;
 
 use WordSelector\Entity\Word;
+use WordSelector\Repository\WordRepository;
 
-class WordManager extends AbstractManager {
+class WordManager {
+
+    /**
+     * @var WordRepository
+     */
+    protected $repository;
+
+    /**
+     * Constructor
+     *
+     * @param WordRepository $repository The repository
+     */
+    public function __construct(WordRepository $repository)
+    {
+        $this->repository = $repository;
+    }
+
+    /**
+     * Finds an object by its identifier.
+     *
+     * @param mixed $id The identifier.
+     *
+     * @return object The object.
+     */
+    public function getById($id)
+    {
+        return $this->repository->find($id);
+    }
+
+    /**
+     * Finds all objects.
+     *
+     * @return array The objects.
+     */
+    public function getAll()
+    {
+        return $this->repository->findAll();
+    }
 
     /**
      * Gets a random word of <length> characters for the <lang> language
