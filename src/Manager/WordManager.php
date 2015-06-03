@@ -52,7 +52,8 @@ class WordManager {
      * @param  float  $complexity
      * @return Word
      */
-    public function getRandomWord($length, $lang, $complexity = null) {
+    public function getRandomWord($length, $lang, $complexity = null)
+    {
         return $this->repository->getRandomWord($length, $lang, $complexity);
     }
 } 

@@ -52,7 +52,8 @@ class WordService {
      * @param  float  $complexity
      * @return Word
      */
-    public function getRandomWord($length, $lang, $complexity = null) {
+    public function getRandomWord($length, $lang, $complexity = null)
+    {
         return $this->manager->getRandomWord($length, $lang, $complexity);
     }
 } 

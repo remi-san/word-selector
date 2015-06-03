@@ -15,7 +15,8 @@ class WordSelector {
      *
      * @param WordService $wordService
      */
-    public function __construct(WordService $wordService) {
+    public function __construct(WordService $wordService)
+    {
         $this->wordService = $wordService;
     }
 
@@ -28,7 +29,8 @@ class WordSelector {
      * @param  float  $complexity
      * @return string
      */
-    public function getRandomWord($length, $lang = 'en', $complexity = null) {
+    public function getRandomWord($length, $lang = 'en', $complexity = null)
+    {
         return $this->wordService->getRandomWord($length, $lang, $complexity)->getWord();
     }
 } 

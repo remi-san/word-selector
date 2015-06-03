@@ -15,12 +15,14 @@ class WordRepository extends EntityRepository {
      * @param  float  $complexity
      * @return Word
      */
-    public function getRandomWord($length, $lang, $complexity = null) {
+    public function getRandomWord($length, $lang, $complexity = null)
+    {
         $dql  = 'SELECT w, RANDOM() as HIDDEN random ';
         $dql .= 'FROM '.$this->getClassName().' w ';
         $dql .= 'WHERE w.length = ?1 ';
         $dql .= 'AND w.lang = ?2 ';
         $dql .= 'ORDER BY random';
+
         return $this->getEntityManager()->createQuery($dql)
             ->setParameter(1, $length)
             ->setParameter(2, $lang)

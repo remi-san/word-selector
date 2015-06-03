@@ -113,14 +113,16 @@ class Word {
     /**
      * Calculate the number of different letters in the word
      */
-    protected function nbLetters() {
+    protected function nbLetters()
+    {
         $this->nbLetters = count(array_unique(str_split($this->word)));
     }
 
     /**
      * Calculate the complexity of the word
      */
-    protected function complexity() {
+    protected function complexity()
+    {
         $this->complexity = ($this->nbLetters*$this->nbLetters*$this->nbLetters)/($this->length*$this->length);
     }
 }
