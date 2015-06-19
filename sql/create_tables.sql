@@ -1,6 +1,6 @@
 CREATE SCHEMA wordselector;
 
--- Table en
+-- Table word
 CREATE TABLE wordselector.word (
     id         serial                NOT NULL,
     word       character varying(45) NOT NULL,
@@ -9,7 +9,7 @@ CREATE TABLE wordselector.word (
     letters_nb integer,
     complexity numeric(8,5),
     CONSTRAINT word_pkey   PRIMARY KEY (id),
-    CONSTRAINT en_word_key UNIQUE (word)
+    CONSTRAINT en_word_key UNIQUE (lang, word)
 );
 
 -- Table letter_details
