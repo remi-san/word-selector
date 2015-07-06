@@ -14,6 +14,11 @@ use WordSelector\Util\Doctrine\Random;
 
 class TestRandom  extends \PHPUnit_Framework_TestCase {
 
+    public function tearDown()
+    {
+        \Mockery::close();
+    }
+
     /**
      * @test
      * @throws QueryException
