@@ -5,8 +5,8 @@ use Doctrine\ORM\Query;
 use WordSelector\Entity\Word;
 use WordSelector\Repository\WordRepository;
 
-class WordRepositoryTest extends \PHPUnit_Framework_TestCase {
-
+class WordRepositoryTest extends \PHPUnit_Framework_TestCase
+{
     public function tearDown()
     {
         \Mockery::close();
@@ -15,8 +15,8 @@ class WordRepositoryTest extends \PHPUnit_Framework_TestCase {
     /**
      * @test
      */
-    public function testWordService() {
-
+    public function testWordService()
+    {
         $word = new Word(1, 'TEST', 'en');
 
         $configuration = \Mockery::mock('\\Doctrine\\ORM\\Configuration');
@@ -39,4 +39,4 @@ class WordRepositoryTest extends \PHPUnit_Framework_TestCase {
         $wr = new WordRepository($entityManager, $classMetadata);
         $this->assertEquals($word, $wr->getRandomWord(4, 'en'));
     }
-} 
+}

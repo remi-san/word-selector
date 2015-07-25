@@ -1,47 +1,35 @@
 <?php
 namespace WordSelector\Entity;
 
-/**
- * @Entity(repositoryClass="\WordSelector\Repository\WordRepository")
- * @Table(name="wordselector.word")
- **/
-class Word {
-
+class Word
+{
     /**
      * @var int
-     * @Id
-     * @Column(type="integer")
-     * @GeneratedValue
      **/
     protected $id;
 
     /**
      * @var string
-     * @Column(type="string")
      **/
     protected $word;
 
     /**
      * @var int
-     * @Column(type="integer",name="len")
      **/
     protected $length;
 
     /**
      * @var float
-     * @Column(type="string")
      **/
     protected $lang;
 
     /**
      * @var int
-     * @Column(type="integer",name="letters_nb")
      */
     protected $nbLetters;
 
     /**
      * @var float
-     * @Column(type="float")
      */
     protected $complexity;
 
@@ -52,7 +40,7 @@ class Word {
      * @param string $word
      * @param string $lang
      */
-    function __construct($id, $word, $lang)
+    public function __construct($id, $word, $lang)
     {
         $this->id = $id;
         $this->word = $word;

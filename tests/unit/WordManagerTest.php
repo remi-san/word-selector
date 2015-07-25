@@ -4,8 +4,8 @@ namespace WordSelector\Test;
 use WordSelector\Entity\Word;
 use WordSelector\Manager\WordManager;
 
-class WordManagerTest extends \PHPUnit_Framework_TestCase {
-
+class WordManagerTest extends \PHPUnit_Framework_TestCase
+{
     public function tearDown()
     {
         \Mockery::close();
@@ -14,7 +14,8 @@ class WordManagerTest extends \PHPUnit_Framework_TestCase {
     /**
      * @test
      */
-    public function testWordService() {
+    public function testWordService()
+    {
 
         $word = new Word(1, 'TEST', 'en');
 
@@ -28,4 +29,4 @@ class WordManagerTest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals($word, $wm->getById(1));
         $this->assertEquals(array($word), $wm->getAll());
     }
-} 
+}

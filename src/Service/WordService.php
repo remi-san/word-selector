@@ -4,8 +4,8 @@ namespace WordSelector\Service;
 use WordSelector\Entity\Word;
 use WordSelector\Manager\WordManager;
 
-class WordService {
-
+class WordService
+{
     /**
      * @var WordManager
      */
@@ -56,4 +56,4 @@ class WordService {
     {
         return $this->manager->getRandomWord($length, $lang, $complexity);
     }
-} 
+}

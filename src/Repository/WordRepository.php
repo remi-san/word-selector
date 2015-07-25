@@ -4,8 +4,8 @@ namespace WordSelector\Repository;
 use Doctrine\ORM\EntityRepository;
 use WordSelector\Entity\Word;
 
-class WordRepository extends EntityRepository {
-
+class WordRepository extends EntityRepository
+{
     /**
      * Gets a random word of <length> characters for the <lang> language
      * <lang> must be an iso2 code in lower case
@@ -29,4 +29,4 @@ class WordRepository extends EntityRepository {
             ->setMaxResults(1)
             ->getSingleResult();
     }
-} 
+}

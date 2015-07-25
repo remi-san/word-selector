@@ -12,7 +12,6 @@ use Doctrine\ORM\Query\SqlWalker;
  */
 class Random extends FunctionNode
 {
-
     /**
      * @param Parser $parser
      */
@@ -30,10 +29,15 @@ class Random extends FunctionNode
      */
     public function getSql(SqlWalker $sqlWalker)
     {
-        switch($sqlWalker->getConnection()->getDatabasePlatform()->getName()) {
-            case 'postgresql': return 'RANDOM()'; break;
-            case 'mysql': return 'RAND()'; break;
-            default: throw new QueryException("You can't use RANDOM()!");
+        switch ($sqlWalker->getConnection()->getDatabasePlatform()->getName()) {
+            case 'postgresql':
+                return 'RANDOM()';
+                break;
+            case 'mysql':
+                return 'RAND()';
+                break;
+            default:
+                throw new QueryException("You can't use RANDOM()!");
         }
     }
 }

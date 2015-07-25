@@ -3,8 +3,8 @@ namespace WordSelector\Test;
 
 use WordSelector\Entity\Word;
 
-class WordTest extends \PHPUnit_Framework_TestCase {
-
+class WordTest extends \PHPUnit_Framework_TestCase
+{
     public function tearDown()
     {
         \Mockery::close();
@@ -13,7 +13,8 @@ class WordTest extends \PHPUnit_Framework_TestCase {
     /**
      * @test
      */
-    public function testWordSelector() {
+    public function testWordSelector()
+    {
 
         $text = 'TEST';
         $lang = 'en';
@@ -26,4 +27,4 @@ class WordTest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals(3, $word->getNbLetters());
         $this->assertEquals(27/16, $word->getComplexity());
     }
-} 
+}

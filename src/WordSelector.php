@@ -3,8 +3,8 @@ namespace WordSelector;
 
 use WordSelector\Service\WordService;
 
-class WordSelector {
-
+class WordSelector
+{
     /**
      * @var WordService
      */
@@ -33,4 +33,4 @@ class WordSelector {
     {
         return $this->wordService->getRandomWord($length, $lang, $complexity)->getWord();
     }
-} 
+}

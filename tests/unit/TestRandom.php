@@ -1,19 +1,11 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: remi
- * Date: 12/03/15
- * Time: 00:17
- */
-
 namespace WordSelector\Test;
-
 
 use Doctrine\ORM\Query\QueryException;
 use WordSelector\Util\Doctrine\Random;
 
-class TestRandom  extends \PHPUnit_Framework_TestCase {
-
+class TestRandom extends \PHPUnit_Framework_TestCase
+{
     public function tearDown()
     {
         \Mockery::close();
@@ -23,7 +15,8 @@ class TestRandom  extends \PHPUnit_Framework_TestCase {
      * @test
      * @throws QueryException
      */
-    public function testRandomMySql() {
+    public function testRandomMySql()
+    {
 
         $parser = \Mockery::mock('\\Doctrine\\ORM\\Query\\Parser');
         $parser->shouldReceive('match')->times(3);
@@ -47,7 +40,8 @@ class TestRandom  extends \PHPUnit_Framework_TestCase {
      * @test
      * @throws QueryException
      */
-    public function testRandomPostgresql() {
+    public function testRandomPostgresql()
+    {
 
         $parser = \Mockery::mock('\\Doctrine\\ORM\\Query\\Parser');
         $parser->shouldReceive('match')->times(3);
@@ -71,7 +65,8 @@ class TestRandom  extends \PHPUnit_Framework_TestCase {
      * @test
      * @throws QueryException
      */
-    public function testRandomOracle() {
+    public function testRandomOracle()
+    {
 
         $this->setExpectedException('\\Doctrine\\ORM\\Query\\QueryException');
 
@@ -92,4 +87,4 @@ class TestRandom  extends \PHPUnit_Framework_TestCase {
 
         $random->getSql($walker);
     }
-} 
+}
