@@ -7,9 +7,6 @@ use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\QueryException;
 use Doctrine\ORM\Query\SqlWalker;
 
-/**
- * RandFunction ::= "RANDOM" "(" ")"
- */
 class Random extends FunctionNode
 {
     /**
