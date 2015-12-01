@@ -8,12 +8,12 @@ services:
 
     WordManager:
         class: \WordSelector\Manager\WordManager
-        arguments: [ @WordRepository ]
+        arguments: [ '@WordRepository' ]
 
     WordService:
         class: \WordSelector\Service\WordService
-        arguments: [ @WordManager ]
+        arguments: [ '@WordManager' ]
 
     WordSelector:
         class: \WordSelector\WordSelector
-        arguments: [ @WordService ]
+        arguments: [ '@WordService' ]
