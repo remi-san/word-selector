@@ -1,12 +1,5 @@
 services:
 
-    DoctrineAnnotationConfiguration:
-        class:     Doctrine\ORM\Configuration
-        factory:   [ Doctrine\ORM\Tools\Setup, createAnnotationMetadataConfiguration ]
-        arguments: [ %orm.doctrine.entities.paths%, %orm.doctrine.devmode% ]
-        calls:
-            - [ 'addCustomNumericFunction', [ 'RANDOM', 'WordSelector\Util\Doctrine\Random' ] ]
-
     DoctrineYmlConfiguration:
         class:     Doctrine\ORM\Configuration
         factory:   [ Doctrine\ORM\Tools\Setup, createYAMLMetadataConfiguration ]
