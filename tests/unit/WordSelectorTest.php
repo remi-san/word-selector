@@ -2,7 +2,8 @@
 namespace WordSelector\Test;
 
 use WordSelector\Entity\Word;
-use WordSelector\WordSelector;
+use WordSelector\Repository\WordRepository;
+use WordSelector\DoctrineWordSelector;
 
 class WordSelectorTest extends \PHPUnit_Framework_TestCase
 {
@@ -18,10 +19,10 @@ class WordSelectorTest extends \PHPUnit_Framework_TestCase
     {
         $word = 'TEST';
 
-        $service = \Mockery::mock('\\WordSelector\\Service\\WordService');
-        $service->shouldReceive('getRandomWord')->andReturn(new Word(1, $word, 'en'));
+        $repository = \Mockery::mock(WordRepository::class);
+        $repository->shouldReceive('getRandomWord')->andReturn(new Word(1, $word, 'en'));
 
-        $ws = new WordSelector($service);
+        $ws = new DoctrineWordSelector($repository);
         $this->assertEquals($word, $ws->getRandomWord(4, 'en'));
     }
 }

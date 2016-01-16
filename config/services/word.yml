@@ -5,14 +5,6 @@ services:
         factory:   [ '@EntityManager', getRepository ]
         arguments: [ WordSelector\Entity\Word ]
 
-    WordManager:
-        class:     WordSelector\Manager\WordManager
-        arguments: [ '@WordRepository' ]
-
-    WordService:
-        class:     WordSelector\Service\WordService
-        arguments: [ '@WordManager' ]
-
     WordSelector:
-        class:     WordSelector\WordSelector
-        arguments: [ '@WordService' ]
+        class:     WordSelector\DoctrineWordSelector
+        arguments: [ '@WordRepository' ]
