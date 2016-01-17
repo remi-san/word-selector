@@ -1,8 +1,7 @@
 parameters:
 
-    orm.doctrine.entities.paths: [ "/home/macosx/web/twitter-hangman/vendor/remi-san/word-selector/src/Entity" ]
     orm.doctrine.yml.paths: [ "/home/macosx/web/twitter-hangman/vendor/remi-san/word-selector/config/orm" ]
-    orm.doctrine.devmode:       true
+    orm.doctrine.devmode:   true
     orm.doctrine.db:
         driver:   "pdo_pgsql"
         host:     "172.16.103.129"

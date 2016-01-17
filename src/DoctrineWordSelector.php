@@ -27,10 +27,19 @@ class DoctrineWordSelector implements WordSelector
      * @param  int    $length
      * @param  string $lang
      * @param  float  $complexity
+     *
+     * @throws \InvalidArgumentException
+     *
      * @return string
      */
     public function getRandomWord($length, $lang = 'en', $complexity = null)
     {
-        return $this->wordRepository->getRandomWord($length, $lang, $complexity)->getWord();
+        $word = $this->wordRepository->getRandomWord($length, $lang, $complexity);
+
+        if (!$word) {
+            throw new \InvalidArgumentException('Could not find a word');
+        }
+
+        return $word->getWord();
     }
 }

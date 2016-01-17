@@ -4,6 +4,9 @@ namespace WordSelector\Repository;
 use Doctrine\ORM\EntityRepository;
 use WordSelector\Entity\Word;
 
+/**
+ * @codeCoverageIgnore
+ */
 class WordRepository extends EntityRepository
 {
     /**
@@ -27,6 +30,6 @@ class WordRepository extends EntityRepository
             ->setParameter(1, $length)
             ->setParameter(2, $lang)
             ->setMaxResults(1)
-            ->getSingleResult();
+            ->getOneOrNullResult();
     }
 }
