@@ -3,7 +3,7 @@ namespace WordSelector\Test;
 
 use WordSelector\Entity\Word;
 use WordSelector\Repository\WordRepository;
-use WordSelector\DoctrineWordSelector;
+use WordSelector\StoredWordSelector;
 
 class WordSelectorTest extends \PHPUnit_Framework_TestCase
 {
@@ -17,12 +17,12 @@ class WordSelectorTest extends \PHPUnit_Framework_TestCase
      */
     public function testWordSelector()
     {
-        $word = 'TEST';
+        $wordObject = new Word('TEST', 'en', 5);
 
         $repository = \Mockery::mock(WordRepository::class);
-        $repository->shouldReceive('getRandomWord')->andReturn(new Word(1, $word, 'en'));
+        $repository->shouldReceive('getRandomWord')->andReturn($wordObject);
 
-        $ws = new DoctrineWordSelector($repository);
-        $this->assertEquals($word, $ws->getRandomWord(4, 'en'));
+        $ws = new StoredWordSelector($repository);
+        $this->assertEquals($wordObject, $ws->getRandomWord(4, 'en'));
     }
 }

@@ -1,6 +1,8 @@
 <?php
 namespace WordSelector;
 
+use WordSelector\Entity\Word;
+
 interface WordSelector
 {
     /**
@@ -10,7 +12,10 @@ interface WordSelector
      * @param  int    $length
      * @param  string $lang
      * @param  float  $complexity
-     * @return string
+     *
+     * @throws \InvalidArgumentException
+     *
+     * @return Word
      */
     public function getRandomWord($length, $lang = 'en', $complexity = null);
 }

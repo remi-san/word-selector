@@ -1,9 +1,10 @@
 <?php
 namespace WordSelector;
 
+use WordSelector\Entity\Word;
 use WordSelector\Repository\WordRepository;
 
-class DoctrineWordSelector implements WordSelector
+class StoredWordSelector implements WordSelector
 {
     /**
      * @var WordRepository
@@ -30,7 +31,7 @@ class DoctrineWordSelector implements WordSelector
      *
      * @throws \InvalidArgumentException
      *
-     * @return string
+     * @return Word
      */
     public function getRandomWord($length, $lang = 'en', $complexity = null)
     {
@@ -40,6 +41,6 @@ class DoctrineWordSelector implements WordSelector
             throw new \InvalidArgumentException('Could not find a word');
         }
 
-        return $word->getWord();
+        return $word;
     }
 }

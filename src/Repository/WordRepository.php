@@ -1,13 +1,9 @@
 <?php
 namespace WordSelector\Repository;
 
-use Doctrine\ORM\EntityRepository;
-use WordSelector\Entity\Word;
+use WordSelector\Entity\DoctrineWord;
 
-/**
- * @codeCoverageIgnore
- */
-class WordRepository extends EntityRepository
+interface WordRepository
 {
     /**
      * Gets a random word of <length> characters for the <lang> language
@@ -16,20 +12,8 @@ class WordRepository extends EntityRepository
      * @param  int    $length
      * @param  string $lang
      * @param  float  $complexity
-     * @return Word
+     *
+     * @return DoctrineWord
      */
-    public function getRandomWord($length, $lang, $complexity = null)
-    {
-        $dql  = 'SELECT w, RANDOM() as HIDDEN random ';
-        $dql .= 'FROM '.$this->getClassName().' w ';
-        $dql .= 'WHERE w.length = ?1 ';
-        $dql .= 'AND w.lang = ?2 ';
-        $dql .= 'ORDER BY random';
-
-        return $this->getEntityManager()->createQuery($dql)
-            ->setParameter(1, $length)
-            ->setParameter(2, $lang)
-            ->setMaxResults(1)
-            ->getOneOrNullResult();
-    }
+    public function getRandomWord($length, $lang, $complexity = null);
 }
