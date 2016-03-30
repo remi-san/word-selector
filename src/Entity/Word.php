@@ -15,7 +15,7 @@ class Word
     protected $length;
 
     /**
-     * @var float
+     * @var string
      **/
     protected $lang;
 
