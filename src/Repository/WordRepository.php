@@ -1,7 +1,7 @@
 <?php
 namespace WordSelector\Repository;
 
-use WordSelector\Entity\DoctrineWord;
+use WordSelector\Entity\Word;
 
 interface WordRepository
 {
@@ -13,7 +13,7 @@ interface WordRepository
      * @param  string $lang
      * @param  float  $complexity
      *
-     * @return DoctrineWord
+     * @return Word
      */
     public function getRandomWord($length, $lang, $complexity = null);
 }
