@@ -25,4 +25,18 @@ class WordSelectorTest extends \PHPUnit_Framework_TestCase
         $ws = new StoredWordSelector($repository);
         $this->assertEquals($wordObject, $ws->getRandomWord(4, 'en'));
     }
+
+    /**
+     * @test
+     */
+    public function testNotExistingWordSelector()
+    {
+        $repository = \Mockery::mock(WordRepository::class);
+        $repository->shouldReceive('getRandomWord')->andReturn(null);
+
+        $this->setExpectedException(\InvalidArgumentException::class);
+
+        $ws = new StoredWordSelector($repository);
+        $ws->getRandomWord(4, 'en');
+    }
 }

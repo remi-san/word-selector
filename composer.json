@@ -1,8 +1,10 @@
 {
     "name": "remi-san/word-selector",
     "description" : "A word selector.",
+    "license" : "MIT",
     "keywords": [
-        "Game"
+        "Word",
+        "Lib"
     ],
     "authors": [
         {
@@ -13,10 +15,10 @@
         }
     ],
     "require-dev": {
-        "symfony/dependency-injection": "~2.6",
-        "symfony/config": "~2.6",
         "phpunit/phpunit": "~4.5",
-        "Mockery/Mockery": "~0.9"
+        "Mockery/Mockery": "~0.9",
+        "fabpot/php-cs-fixer": "^1.10",
+        "squizlabs/php_codesniffer": "~2.0"
     },
     "autoload": {
         "psr-4": {
