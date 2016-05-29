@@ -44,6 +44,10 @@ class WordSelectorProxyAdapter implements AdapterInterface
             throw new \InvalidArgumentException('Cannot call this method');
         }
 
+        if (count($params) !== 3) {
+            throw new \InvalidArgumentException('Cannot call this method with the given parameters');
+        }
+
         $options = [
             'length'     => $params[0],
             'lang'       => $params[1],
