@@ -1,4 +1,5 @@
 <?php
+
 namespace WordSelector\Repository;
 
 use WordSelector\Entity\Word;

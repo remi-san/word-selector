@@ -1,4 +1,5 @@
 <?php
+
 namespace WordSelector;
 
 use WordSelector\Entity\Word;
