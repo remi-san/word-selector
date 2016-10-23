@@ -11,6 +11,21 @@ use WordSelector\WordSelector;
 
 class WordSelectorProxyAdapter implements AdapterInterface
 {
+    const GET_RANDOM_WORD_METHOD = 'getRandomWord';
+
+    const LENGTH_OPTION = 'length';
+    const LANG_OPTION = 'lang';
+    const COMPLEXITY_OPTION = 'complexity';
+
+    const WORD_RESPONSE = 'word';
+    const LANG_RESPONSE = 'lang';
+    const COMPLEXITY_RESPONSE = 'complexity';
+
+    const ERROR_RESPONSE = 'error';
+
+    const API_ENDPOINT = '/random';
+    const HTTP_METHOD = 'GET';
+
     /**
      * @var Client
      */
@@ -40,7 +55,7 @@ class WordSelectorProxyAdapter implements AdapterInterface
             throw new \InvalidArgumentException('Cannot call this class');
         }
 
-        if ($method !== 'getRandomWord') {
+        if ($method !== self::GET_RANDOM_WORD_METHOD) {
             throw new \InvalidArgumentException('Cannot call this method');
         }
 
@@ -49,25 +64,25 @@ class WordSelectorProxyAdapter implements AdapterInterface
         }
 
         $options = [
-            'length'     => $params[0],
-            'lang'       => $params[1],
-            'complexity' => $params[2]
+            self::LENGTH_OPTION => $params[0],
+            self::LANG_OPTION => $params[1],
+            self::COMPLEXITY_OPTION => $params[2]
         ];
 
         try {
             $response = $this->client->request(
-                'GET',
-                '/random?' . http_build_query($options)
+                self::HTTP_METHOD,
+                self::API_ENDPOINT . '?' . http_build_query($options)
             );
             $decodedJson = json_decode((string) $response->getBody());
             return new Word(
-                $decodedJson->word,
-                $decodedJson->lang,
-                $decodedJson->complexity
+                $decodedJson->{self::WORD_RESPONSE},
+                $decodedJson->{self::LANG_RESPONSE},
+                $decodedJson->{self::COMPLEXITY_RESPONSE}
             );
         } catch (ClientException $e) {
             $decodedJson = json_decode((string) $e->getResponse()->getBody());
-            throw new \InvalidArgumentException($decodedJson->error);
+            throw new \InvalidArgumentException($decodedJson->{self::ERROR_RESPONSE});
         } catch (BadResponseException $e) {
             $exceptionBody = (string) $e->getResponse()->getBody();
             throw new \RuntimeException($exceptionBody);

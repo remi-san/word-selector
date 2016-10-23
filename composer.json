@@ -20,7 +20,8 @@
         "friendsofphp/php-cs-fixer": "^1.10",
         "squizlabs/php_codesniffer": "~2.0",
         "guzzlehttp/guzzle": "^6.0",
-        "ocramius/proxy-manager": "^1.0"
+        "ocramius/proxy-manager": "^1.0",
+        "fzaninotto/faker": "^1.6"
     },
     "autoload": {
         "psr-4": {
