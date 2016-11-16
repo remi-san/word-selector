@@ -32,7 +32,7 @@ class WordTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function testWordSelector()
+    public function itShouldCreateAWord()
     {
         $word = new Word($this->text, $this->lang, $this->complexity);
 
